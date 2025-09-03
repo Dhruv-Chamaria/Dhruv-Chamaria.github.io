@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+        <h1>Happy Birthday, Dhwani Parikh!</h1>
+        
+        <img src="birthday-image.jpg" alt="Birthday Celebration" class="birthday-image">
+        
+        <p>
+            Wishing you the happiest of birthdays! I wanted to create a little something special just for you. 
+            Remember all the amazing times we've had, and here's to many more to come.
+            You are an incredible person, and you deserve all the joy in the world.
+        </p>
+
+        <p class="signature">
+            With all my love, <br>
+            Dhruv Chamaria
+        </p>
+
+        <div class="button-container">
+            <button id="playFavBtn">Play Your Favourite</button>
+            <button id="playMySongBtn">Play My Song For You</button>
+        </div>
+    </div>
+
+    <audio id="favSong" src="favourite-song.mp3" loop></audio>
+    <audio id="mySong" src="my-song.mp3" loop></audio>
+
+    <script>
+        // Get all the elements we need
+        const playFavBtn = document.getElementById('playFavBtn');
+        const playMySongBtn = document.getElementById('playMySongBtn');
+        const favSong = document.getElementById('favSong');
+        const mySong = document.getElementById('mySong');
+
+        // Logic for the "Favourite Song" button
+        playFavBtn.addEventListener('click', function() {
+            // Pause the other song if it's playing
+            mySong.pause();
+            playMySongBtn.textContent = 'Play My Song For You';
+
+            // Play or pause this song
+            if (favSong.paused) {
+                favSong.play();
+                playFavBtn.textContent = '🎶 Playing Favourite...';
+            } else {
+                favSong.pause();
+                playFavBtn.textContent = 'Play Your Favourite';
+            }
+        });
+
+        // Logic for the "My Song For You" button
+        playMySongBtn.addEventListener('click', function() {
+            // Pause the other song if it's playing
+            favSong.pause();
+            playFavBtn.textContent = 'Play Your Favourite';
+
+            // Play or pause this song
+            if (mySong.paused) {
+                mySong.play();
+                playMySongBtn.textContent = '🎶 Playing My Song...';
+            } else {
+                mySong.pause();
+                playMySongBtn.textContent = 'Play My Song For You';
+            }
+        });
+    </script>
+</body>
+</html>
